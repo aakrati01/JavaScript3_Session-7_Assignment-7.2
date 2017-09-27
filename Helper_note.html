@@ -1,0 +1,45 @@
+<!DOCTYPE html>
+<html>
+<head>
+	<title> Helper Note </title>		<!-- Title on the page -->
+</head>
+
+<body>
+
+	<p id="help"> Helpful notes will appear here </p>			<!-- Taking labels and input -->
+	<p><b> User Name : <input type="text" id="User_name" name="name"> </p>
+	<p> Age : <input type="text" id="age" name="age"> </p>
+	<p >City : <input type="text" id="city" name="city"> </p>
+	
+
+
+	<script type="text/javascript">			/* Defining functions to display helper note in input box */
+		function showHelp(help) {
+	 		 document.getElementById('help').innerHTML = help;
+		}
+
+		function makeHelpCallback(help) {
+	  		return function() {
+	    	showHelp(help);
+	 	 };
+		}
+
+		function setupHelp() {			/* This hepl will diplay as clicked on the input box */
+	  		var helpText = [
+		      {'id': 'User_name', 'help': 'Please input the username'},
+		      {'id': 'city', 'help': 'Please input the city'},
+		      {'id': 'age', 'help': 'Input your age (you must be over 16)'}
+	    ];
+
+	   for (var i = 0; i < helpText.length; i++) {
+		    var item = helpText[i];
+		    document.getElementById(item.id).onfocus = makeHelpCallback(item.help);
+		  }
+		}
+
+		setupHelp();
+	</script>
+
+
+</body>
+</html>
